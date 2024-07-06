@@ -2,7 +2,6 @@
 	Write a function called "everything" that takes an array and a predicate function as
 	parameters. Write two versions, one using a loop and one using the "some" method.
 */
-
 function everything_loop(array, predicate) {
 	for (let element of array)
 		if (!predicate(element))
@@ -19,7 +18,7 @@ console.log(everything_loop([], n => n < 10))
 
 
 function everything_some(array, predicate) {
-	return array.some((element) => !predicate(element));
+	return !array.some((element) => !predicate(element));
 }
 
 /* ---------------------------------- TESTS --------------------------------- */

@@ -7,7 +7,7 @@ function count_bs(string) {
 	let count = 0
 
 	for (let i = 0; i < length; i++)
-		if (char == string[i])
+		if (string[i] == "B")
 			count += 1
 
 	return count
@@ -27,8 +27,8 @@ console.log(count_bs("BBC"))
 function count_char(string, char) {
 	let count = 0
 
-	for (let current_char of string)
-		if (current_char == char)
+	for (let char_ of string)
+		if (char_ == char)
 			count += 1
 
 	return count

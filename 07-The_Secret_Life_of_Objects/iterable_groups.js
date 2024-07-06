@@ -1,21 +1,23 @@
 class GroupIterator {
-	constructor(group) {
-		this.index = 0
-		this.group = group
+	#members
+	#index
+
+	constructor(members) {
+		this.#index = 0
+		this.#members = members
 	}
 
-	next() {
-		let members = this.group.members
 
-		if (this.index >= members.length)
-			return { done: true } // ">=" in case the index exceeds the members.length
+	next() {
+		if (this.#index >= this.#members.length)
+			return { done: true }
 		else {
-			let value = { index: this.index, value: members[this.index] }
-			this.index++
-			return { value, done: false }
+			let result = { value: this.#members[this.#index], done: false }
+			this.#index++
+			return result
 		}
 	}
 }
 
 
-global.GroupIterator = GroupIterator
+module.exports = { GroupIterator }

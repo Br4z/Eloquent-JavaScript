@@ -1,4 +1,4 @@
-require("./SCRIPTS.js")
+const { SCRIPTS } = require("./SCRIPTS.js")
 
 
 function character_script(code) {
@@ -14,4 +14,4 @@ function character_script(code) {
 // console.log(character_script(121))
 
 
-global.character_script = character_script
+module.exports = { character_script }

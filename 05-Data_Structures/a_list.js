@@ -5,9 +5,8 @@
 	rest: ------> | rest ------> | rest: null
 */
 function array_to_list(array) {
-	/*
 	let list = null
-
+	/*
 	for (let i = array.length - 1; i >= 0; i--)
 		list = { value: array[i], rest: list }
 
@@ -15,7 +14,7 @@ function array_to_list(array) {
 	*/
 
 	if (array.length == 0)
-		return null
+		return list
 	else
 		list = { value : array.shift(), rest : array_to_list(array) }
 
@@ -28,7 +27,7 @@ console.log(array_to_list([]))
 
 
 // Write the function "list_to_array" function that produces an array from a list.
-function list_to_array(list, array = []) {
+function list_to_array(list, array=[]) {
 	/*
 	let array = []
 

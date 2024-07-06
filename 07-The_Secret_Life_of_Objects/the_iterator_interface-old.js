@@ -71,4 +71,4 @@ Matrix.prototype[Symbol.iterator] = function () {
 // 	console.log(x, y, value)
 
 
-global.Matrix = Matrix
+module.exports = { Matrix }

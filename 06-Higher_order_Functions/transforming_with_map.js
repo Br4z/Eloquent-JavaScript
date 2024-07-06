@@ -1,4 +1,4 @@
-require("./SCRIPTS.js")
+const { SCRIPTS } = require("./SCRIPTS.js")
 
 
 function map(array, transform) {

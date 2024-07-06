@@ -1,4 +1,4 @@
-require("./SCRIPTS.js")
+const { SCRIPTS } = require("./SCRIPTS.js")
 
 
 function reduce(array, combine, start) {
@@ -23,9 +23,12 @@ function character_count(script) {
 
 /* ---------------------------------- TEST ---------------------------------- */
 
-console.log(
-	SCRIPTS.reduce((a, b) => {
-			return character_count(a) < character_count(b) ? b : a
-		}
-	)
-)
+// console.log(
+// 	SCRIPTS.reduce((a, b) => {
+// 			return character_count(a) < character_count(b) ? b : a
+// 		}
+// 	)
+// )
+
+
+module.exports = { character_count }

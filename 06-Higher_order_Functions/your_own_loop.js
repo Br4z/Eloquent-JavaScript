@@ -5,7 +5,6 @@
 	calls the body function, giving it the current value. Finally, it calls the update function to
 	create a new value and starts from the beginning.
 */
-
 function loop(start, test, update, body) {
 	for (let value = start; test(value); update(value))
 		body(value)

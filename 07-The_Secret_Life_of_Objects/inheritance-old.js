@@ -1,4 +1,4 @@
-require("./the_iterator_interface")
+const { Matrix } = require("./the_iterator_interface")
 
 
 class SymmetricMatrix extends Matrix {
@@ -20,8 +20,8 @@ class SymmetricMatrix extends Matrix {
 }
 
 const size = 3
-let symmetricMatrix = new SymmetricMatrix(size, (x, y) => `(${x}, ${y})`)
-Matrix.show(symmetricMatrix)
+let symmetric_matrix = new SymmetricMatrix(size, (x, y) => `(${x}, ${y})`)
+Matrix.show(symmetric_matrix)
 
 
 function symmetry_checker(matrix) {
@@ -29,19 +29,18 @@ function symmetry_checker(matrix) {
 
 	// Check diagonals
 	for (let y = 1; y < size; y++) {
-		for (let x = 0; x < y; x++) {
+		for (let x = 0; x < y; x++)
 			if (matrix.get(x, y) != matrix.get(y, x)) {
 				symmetric = false
 				break
 			}
-		}
+
 		if (!symmetric)
 			break
 	}
 	return symmetric
 }
 
-
 /* ---------------------------------- TEST ---------------------------------- */
 
-console.log(symmetry_checker(symmetricMatrix))
+console.log(symmetry_checker(symmetric_matrix))

@@ -1,4 +1,4 @@
-require("./JOURNAL.js")
+const { JOURNAL } = require("./JOURNAL.js")
 
 
 function phi(table) { // [n_00, n_01, n_10, n_11]
@@ -54,5 +54,4 @@ function table_for(event, journal) {
 // console.log(table_for("pizza", JOURNAL))
 
 
-global.phi = phi
-global.table_for = table_for
+module.exports = { phi, table_for }

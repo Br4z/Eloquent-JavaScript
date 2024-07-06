@@ -1,15 +1,13 @@
-require("./SCRIPTS.js")
-
+const { SCRIPTS } = require("./SCRIPTS.js")
+const { character_count } = require("./summarizing_with_reduce.js")
 
 /*
 // A way without higher-order functions
-
 let biggest = null
 
-for (let script of SCRIPTS) {
-	if (biggest == null || characterCount(biggest) < characterCount(script))
+for (let script of SCRIPTS)
+	if (biggest == null || character_count(biggest) < character_count(script))
 		biggest = script
-}
 
 console.log(biggest)
 */
@@ -34,7 +32,6 @@ console.log(
 
 /*
 // Another way
-
 let total = 0, count = 0
 
 for (let script of SCRIPTS)

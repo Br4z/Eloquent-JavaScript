@@ -1,5 +1,5 @@
-require("./JOURNAL.js")
-require("./computing_a_correlation.js")
+const { JOURNAL } = require("./JOURNAL.js")
+const { phi, table_for } = require("./computing_a_correlation.js")
 
 
 function journal_events(journal) {

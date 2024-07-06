@@ -21,8 +21,8 @@ function range(start, end, step = 1) {
 
 /* ---------------------------------- TESTS --------------------------------- */
 
-// console.log(range(1, 10))
-// console.log(range(5, 2, -1))
+console.log(range(1, 10))
+console.log(range(5, 2, -1))
 
 
 /*
@@ -40,4 +40,4 @@ function sum(array) {
 
 /* ---------------------------------- TEST ---------------------------------- */
 
-// console.log(sum(range(1, 10)))
+console.log(sum(range(1, 10)))

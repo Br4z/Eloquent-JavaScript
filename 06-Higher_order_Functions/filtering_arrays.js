@@ -1,8 +1,7 @@
-require("./SCRIPTS.js")
+const { SCRIPTS } = require("./SCRIPTS.js")
 
 
 // To find the scripts in the data set that are still in use.
-
 function filter(array, test) {
 	let passed = []
 
@@ -16,4 +15,4 @@ function filter(array, test) {
 
 /* ---------------------------------- TEST ---------------------------------- */
 
-console.log(filter(SCRIPTS, (script) => script.living))
+console.log(filter(SCRIPTS, script => script.living))

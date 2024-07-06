@@ -1,5 +1,4 @@
-require("./SCRIPTS.js")
-require("./strings_and_character_codes.js")
+const { character_script } = require("./strings_and_character_codes.js")
 
 
 function count_by(items, group_name) {
@@ -49,4 +48,4 @@ function text_scripts(text) {
 // console.log(text_scripts('英国的狗说"woof", 俄罗斯的狗说"тяв"'))
 
 
-global.count_by = count_by
+module.exports = { count_by }
