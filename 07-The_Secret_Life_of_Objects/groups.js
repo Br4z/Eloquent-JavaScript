@@ -20,7 +20,7 @@ class Group {
 	}
 
 	delete(element) {
-		let element_index = this.members.indexOf(element)
+		let element_index = this.#members.indexOf(element)
 
 		if (element_index != -1)
 			this.#members.splice(element_index, 1)

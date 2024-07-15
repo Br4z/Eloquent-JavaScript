@@ -29,7 +29,4 @@ function build_graph(edges) {
 	return graph
 }
 
-const road_graph = build_graph(roads)
-
-
-globalThis.road_graph = road_graph
+export const road_graph = build_graph(roads)

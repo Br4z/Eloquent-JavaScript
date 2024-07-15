@@ -4,13 +4,13 @@ const accounts = {
 	c: 20
 }
 
-function getAccount() {
-	let accountName = "a" // prompt("Enter an account name")
+function get_account() {
+	let account_name = "a" // prompt("Enter an account name")
 
-	if (!accounts.hasOwnProperty(accountName))
-		throw new Error(`No such account: ${accountName}`)
+	if (!accounts.hasOwnProperty(account_name))
+		throw new Error(`No such account: ${account_name}`)
 
-	return accountName
+	return account_name
 }
 
 function transfer(from, amount) {
@@ -22,7 +22,7 @@ function transfer(from, amount) {
 	try {
 		accounts[from] -= amount
 		progress = 1
-		accounts[getAccount()] += amount
+		accounts[get_account()] += amount
 		progress = 2
 	} finally {
 		if (progress == 1)

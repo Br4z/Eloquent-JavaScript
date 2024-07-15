@@ -1,5 +1,5 @@
-const { character_script } = require("./strings_and_character_codes.js")
-const { count_by } = require("./recognizing_text")
+import { character_script } from "./06-strings_and_character_codes.js"
+import { count_by } from "./07-recognizing_text.js"
 
 
 /*

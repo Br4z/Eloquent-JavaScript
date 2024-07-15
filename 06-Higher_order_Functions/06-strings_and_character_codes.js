@@ -1,7 +1,7 @@
-const { SCRIPTS } = require("./SCRIPTS.js")
+import { SCRIPTS } from "./01-SCRIPTS.js"
 
 
-function character_script(code) {
+export function character_script(code) {
 	for (let script of SCRIPTS)
 		if (script.ranges.some(([from, to]) => { return code >= from && code < to }))
 			return script
@@ -12,6 +12,3 @@ function character_script(code) {
 /* ---------------------------------- TEST ---------------------------------- */
 
 // console.log(character_script(121))
-
-
-module.exports = { character_script }

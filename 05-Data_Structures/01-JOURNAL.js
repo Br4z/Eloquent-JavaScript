@@ -1,4 +1,4 @@
-var JOURNAL = [
+export let JOURNAL = [
 	{ events: ["carrot", "exercise", "weekend"], squirrel: false },
 	{ events: ["bread", "pudding", "brushed teeth", "weekend", "touched tree"], squirrel: false },
 	{ events: ["carrot", "nachos", "brushed teeth", "cycling", "weekend"], squirrel: false },
@@ -90,6 +90,3 @@ var JOURNAL = [
 	{ events: ["bread", "brushed teeth", "television", "weekend"], squirrel: false },
 	{ events: ["cauliflower", "peanuts", "brushed teeth", "weekend"], squirrel: false },
 ]
-
-
-module.exports = { JOURNAL }

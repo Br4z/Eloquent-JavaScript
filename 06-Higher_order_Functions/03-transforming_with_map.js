@@ -1,4 +1,4 @@
-const { SCRIPTS } = require("./SCRIPTS.js")
+import { SCRIPTS } from "./01-SCRIPTS.js"
 
 
 function map(array, transform) {

@@ -1,4 +1,4 @@
-const { SCRIPTS } = require("./SCRIPTS.js")
+import { SCRIPTS } from "./01-SCRIPTS.js"
 
 
 // To find the scripts in the data set that are still in use.

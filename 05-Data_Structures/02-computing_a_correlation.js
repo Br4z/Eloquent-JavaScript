@@ -1,7 +1,7 @@
-const { JOURNAL } = require("./JOURNAL.js")
+import { JOURNAL } from "01-JOURNAL.js"
 
 
-function phi(table) { // [n_00, n_01, n_10, n_11]
+export function phi(table) { // [n_00, n_01, n_10, n_11]
 	return (table[3] * table[0] - table[2] * table[1]) /
 		Math.sqrt((table[2] + table[3]) *
 			(table[0] + table[1]) *
@@ -32,7 +32,7 @@ function phi([n00, n01, n10, n11]) {
 
 	- The second number represents the event.
 */
-function table_for(event, journal) {
+export function table_for(event, journal) {
 	let table = [0, 0, 0, 0]
 
 	for (let i = 0; i < journal.length; i++) {
@@ -52,6 +52,3 @@ function table_for(event, journal) {
 /* ---------------------------------- TEST ---------------------------------- */
 
 // console.log(table_for("pizza", JOURNAL))
-
-
-module.exports = { phi, table_for }

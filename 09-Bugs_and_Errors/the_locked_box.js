@@ -1,22 +1,24 @@
 /*
-	Write a function called "with_box_unlocked" that takes a function value as argument, unlocks the box, runs
-	the function, and then ensures that the box is locked again before returning, regardless of whether the
-	argument function returned normally or threw an exception.
+	Write a function called "with_box_unlocked" that takes a function value as argument, unlocks the
+	box, runs the function, and then ensures that the box is locked again before returning, regardless
+	of whether the argument function returned normally or threw an exception.
 
-	For extra points, make sure that if you call withBoxUnlocked when the box is already unlocked, the box
+	For extra points, make sure that if you call "with_box_unlocked" when the box is already unlocked, the box
 	stays unlocked.
 */
+const box = new class {
+	locked = true
+	#content = []
 
-const box = {
-	locked: true,
-	unlock() { this.locked = false },
-	lock() { this.locked = true },
-	_content: [],
+
+	unlock() { this.locked = false }
+	lock() { this.locked = true }
+
 	get content() {
 		if (this.locked)
 			throw new Error("Locked!")
 		else
-			return this._content
+			return this.#content
 	}
 }
 
@@ -26,8 +28,6 @@ function with_box_unlocked(body) {
 
 	try {
 		return body()
-	} catch (e) {
-		console.log("Error raised: " + e)
 	} finally {
 		box.lock()
 	}

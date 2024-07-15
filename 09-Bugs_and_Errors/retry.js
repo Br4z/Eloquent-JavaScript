@@ -1,10 +1,9 @@
 /*
-	Say you have a function "primitive_multiply" that in 20 percent of cases multiplies two numbers and in the
-	other 80 percent of cases raises an exception of type "MultiplicatorUnitFailure". Write a function that
-	wraps this clunky function and just keeps trying until a call succeeds, after which it returns the
-	result.
+	Say you have a function "primitive_multiply" that in 20 percent of cases multiplies two numbers and
+	in the other 80 percent of cases raises an exception of type "MultiplicatorUnitFailure". Write a
+	function that wraps this clunky function and just keeps trying until a call succeeds, after which
+	it returns the result.
 */
-
 class MultiplicatorUnitFailure extends Error { }
 
 function primitive_multiply(a, b) {

@@ -1,5 +1,5 @@
-const { SCRIPTS } = require("./SCRIPTS.js")
-const { character_count } = require("./summarizing_with_reduce.js")
+import { SCRIPTS } from "./01-SCRIPTS.js"
+import { character_count } from "./04-summarizing_with_reduce.js"
 
 /*
 // A way without higher-order functions

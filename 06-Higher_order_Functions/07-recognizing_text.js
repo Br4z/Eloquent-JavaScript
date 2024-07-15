@@ -1,7 +1,7 @@
-const { character_script } = require("./strings_and_character_codes.js")
+import { character_script } from "./06-strings_and_character_codes.js"
 
 
-function count_by(items, group_name) {
+export function count_by(items, group_name) {
 	let counts = []
 
 	for (let item of items) {
@@ -46,6 +46,3 @@ function text_scripts(text) {
 /* ---------------------------------- TEST ---------------------------------- */
 
 // console.log(text_scripts('英国的狗说"woof", 俄罗斯的狗说"тяв"'))
-
-
-module.exports = { count_by }

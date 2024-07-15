@@ -31,12 +31,12 @@
 			this.node = outer.appendChild(doc.createElement("div"))
 			this.node.style.cssText = "position: relative; line-height: 0.1; margin-left: 10px"
 			this.map = this.node.appendChild(doc.createElement("img"))
-			this.map.src = "http://eloquentjavascript.net/img/village2x.png"
+			this.map.src = "./images/village2x.png"
 			this.map.style.cssText = "vertical-align: -8px"
 			this.robotElt = this.node.appendChild(doc.createElement("div"))
 			this.robotElt.style.cssText = `position: absolute; transition: left ${ 0.8 / speed }s, top ${ 0.8 / speed }s;`
 			let robotPic = this.robotElt.appendChild(doc.createElement("img"))
-			robotPic.src = "http://eloquentjavascript.net/img/robot_moving2x.gif"
+			robotPic.src = "./images/robot_moving2x.gif"
 			this.parcels = []
 
 			this.text = this.node.appendChild(doc.createElement("span"))
@@ -70,7 +70,7 @@
 				heights[place] += 14
 				let node = document.createElement("div")
 				let offset = placeKeys.indexOf(address) * 16
-				node.style.cssText = "position: absolute; height: 16px; width: 16px; background-image: url(http://eloquentjavascript.net/img/parcel2x.png); background-position: 0 -" + offset + "px";
+				node.style.cssText = "position: absolute; height: 16px; width: 16px; background-image: url(./images/parcel2x.png); background-position: 0 -" + offset + "px";
 				if (place == this.worldState.place) {
 					node.style.left = "25px"
 					node.style.bottom = (20 + height) + "px"
@@ -94,7 +94,7 @@
 			if (this.worldState.parcels.length == 0) {
 				this.button.remove()
 				this.text.textContent = ` Finished after ${ this.turn } turns`
-				this.robotElt.firstChild.src = "http://eloquentjavascript.net/img/robot_idle2x.png"
+				this.robotElt.firstChild.src = "./images/robot_idle2x.png"
 			} else {
 				this.schedule()
 			}
@@ -108,12 +108,12 @@
 			if (this.timeout == null) {
 				this.schedule()
 				this.button.textContent = "Stop"
-				this.robotElt.firstChild.src = "http://eloquentjavascript.net/img/robot_moving2x.gif"
+				this.robotElt.firstChild.src = "./images/robot_moving2x.gif"
 			} else {
 				clearTimeout(this.timeout)
 				this.timeout = null
 				this.button.textContent = "Start"
-				this.robotElt.firstChild.src = "http://eloquentjavascript.net/img/robot_idle2x.png"
+				this.robotElt.firstChild.src = "./images/robot_idle2x.png"
 			}
 		}
 	}
@@ -125,100 +125,7 @@
 	}
 })()
 
+import { VillageState } from "./scripts/the_task.js";
+import { lazy_robot } from "./scripts/robot_efficiency.js";
 
-const road_graph = {
-	"Alice's House": ["Bob's House", 'Cabin', 'Post Office'],
-	"Bob's House":   ["Alice's House", 'Town Hall'],
-	"Cabin":         ["Alice's House"],
-	'Post Office':   ["Alice's House", 'Marketplace'],
-	'Town Hall':     ["Bob's House", "Daria's House", 'Marketplace', 'Shop'],
-	"Daria's House": ["Ernie's House", 'Town Hall'],
-	"Ernie's House": ["Daria's House", "Grete's House"],
-	"Grete's House": ["Ernie's House", 'Farm', 'Shop'],
-	"Farm":          ["Grete's House", 'Marketplace'],
-	"Shop":          ["Grete's House", 'Marketplace', 'Town Hall'],
-	"Marketplace":   ['Farm', 'Post Office', 'Shop', 'Town Hall']
-}
-
-
-function random_pick(array) {
-	let choice = Math.floor(Math.random() * array.length)
-	return array[choice]
-}
-
-
-class VillageState {
-	constructor(place, parcels) {
-		this.place = place
-		this.parcels = parcels
-	}
-
-	move(destination) {
-		if (!road_graph[this.place].includes(destination)) {
-			return this // If destinations isn't available in that place, ten return the preview state
-		} else {
-			let parcels = this.parcels.map((p) => { // map takes care of moving the parcels
-				if (p.place != this.place) return p
-				else return { place: destination, address: p.address }
-			}).filter((p) => p.place != p.address) // filter takes care of making the delivery
-			return new VillageState(destination, parcels)
-		}
-	}
-
-	static random(parcel_count = 5) {
-		let parcels = []
-
-		for (let i = 0; i < parcel_count; i++) {
-			let address = random_pick(Object.keys(road_graph))
-			let place
-
-			do {
-				place = random_pick(Object.keys(road_graph))
-			} while (place == address) // To avoid creating parcels at their destinations
-			parcels.push({ place, address })
-		}
-		return new VillageState("Post Office", parcels) // We always start at the "Post Office"
-	}
-}
-
-
-function find_route(graph, from, to) { // Always found a route, because all the places are connected
-	let work = [{ at: from, route: [] }]
-
-	for (let i = 0; i < work.length; i++) {
-		let { at, route } = work[i]
-
-		for (let place of graph[at]) {
-			if (place == to)
-				return route.concat(place) // Path found
-			if (!work.some((w) => w.at == place)) // Path not found
-				work.push({ at: place, route: route.concat(place) })
-		}
-	}
-}
-
-
-function smart_robot({ place, parcels }, route) {
-	let routes = parcels.map(parcel => {
-		if (parcel.place != place)
-			return {
-				route: find_route(road_graph, place, parcel.place),
-				pick_up: true
-			}
-		else
-			return {
-				route: find_route(road_graph, place, parcel.address),
-				pick_up: false
-			}
-	})
-
-	function score({ route, pick_up }) { // Scoring possible routes
-		return (pick_up ? 0.5 : 0) - route.length
-	}
-
-	route = routes.reduce((a, b) => score(a) > score(b) ? a : b).route // Selecting the best
-
-	return { direction: route[0], memory: route.slice(1) }
-}
-
-runRobotAnimation(VillageState.random(), smart_robot, []);
+runRobotAnimation(VillageState.random(), lazy_robot, []);

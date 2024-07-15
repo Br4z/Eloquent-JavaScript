@@ -1,5 +1,5 @@
-const { JOURNAL } = require("./JOURNAL.js")
-const { phi, table_for } = require("./computing_a_correlation.js")
+import { JOURNAL } from "01-JOURNAL.js"
+import { phi, table_for } from "./02-computing_a_correlation.js"
 
 
 function journal_events(journal) {

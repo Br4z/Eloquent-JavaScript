@@ -1,6 +1,6 @@
 // Generated from the Unicode 10 database and https://en.wikipedia.org/wiki/Script_(Unicode)
 
-var SCRIPTS = [
+export let SCRIPTS = [
 	{
 		name: "Adlam",
 		ranges: [
@@ -1874,6 +1874,3 @@ var SCRIPTS = [
 		link: "https://en.wikipedia.org/wiki/Mongolian_writing_systems#Horizontal_square_script",
 	},
 ]
-
-
-module.exports = { SCRIPTS }

@@ -1,4 +1,3 @@
-const { SCRIPTS } = require("./SCRIPTS.js")
 
 
 function reduce(array, combine, start) {
@@ -12,10 +11,10 @@ function reduce(array, combine, start) {
 
 /* ---------------------------------- TEST ---------------------------------- */
 
-console.log(reduce([1, 2, 3, 4], (a, b) => a + b, 0))
+// console.log(reduce([1, 2, 3, 4], (a, b) => a + b, 0))
 
 
-function character_count(script) {
+export function character_count(script) {
 	return script.ranges.reduce((count, [from, to]) => {
 		return count + (to - from)
 	}, 0)
@@ -29,6 +28,3 @@ function character_count(script) {
 // 		}
 // 	)
 // )
-
-
-module.exports = { character_count }

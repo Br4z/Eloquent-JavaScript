@@ -1,5 +1,3 @@
-/* -------------------------------- Debugging -------------------------------- */
-
 function convert_number(decimal_number, base = 10) {
 	let result = "", sign = ""
 

@@ -1,4 +1,5 @@
-require("./simulation.js")
+import { VillageState } from "./the_task.js"
+import { run_robot } from "./simulation.js"
 
 
 const mail_route = [ // Takes maximum 26 turns (twice the 13-step route)
@@ -8,7 +9,7 @@ const mail_route = [ // Takes maximum 26 turns (twice the 13-step route)
 	"Marketplace", "Post Office"
 ]
 
-function route_robot(state, memory) {
+export function route_robot(state, memory) {
 	if (memory.length == 0)
 		memory = mail_route
 
@@ -17,7 +18,4 @@ function route_robot(state, memory) {
 
 /* ---------------------------------- TEST ---------------------------------- */
 
-// run_robot(VillageState.random(), route_robot, [])
-
-
-global.route_robot = route_robot
+run_robot(VillageState.random(), route_robot, [])
