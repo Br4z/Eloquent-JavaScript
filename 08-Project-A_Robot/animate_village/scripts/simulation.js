@@ -1,5 +1,5 @@
-import { road_graph } from "./meadowfield.js"
-import { VillageState } from "./the_task.js"
+import road_graph from "./meadowfield.js"
+import VillageState from "./the_task.js"
 
 
 export function run_robot(state, robot, memory) {
@@ -13,6 +13,7 @@ export function run_robot(state, robot, memory) {
 	}
 }
 
+
 function random_pick(array) {
 	let choice = Math.floor(Math.random() * array.length)
 	return array[choice]
@@ -21,6 +22,7 @@ function random_pick(array) {
 export function random_robot(state) { // This robot does not need memory
 	return { direction: random_pick(road_graph[state.place]) } // roadGraph[state.place] = roads available
 }
+
 
 VillageState.random = function (parcel_count=5) {
 	let parcels = []

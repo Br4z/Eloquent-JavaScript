@@ -18,11 +18,11 @@ function verify(regexp, yes, no) {
 
 	for (let str of yes)
 		if (!regexp.test(str))
-			console.log(`Failure to match '${str}'`)
+			console.log(`Failure to match "${str}"`)
 
 	for (let str of no)
 		if (regexp.test(str))
-			console.log(`Unexpected match for '${str}'`)
+			console.log(`Unexpected match for "${str}"`)
 }
 
 // car and cat
@@ -46,7 +46,7 @@ verify(/ious\b/,
 	["ruinous", "consciousness"]);
 
 // A whitespace character followed by a period, comma, colon, or semicolon
-verify(/\s(\.|,|:|;)/,
+verify(/\s[.,:;]/,
 	["bad punctuation ."],
 	["escape the period"]);
 

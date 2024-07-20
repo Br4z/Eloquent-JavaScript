@@ -1,7 +1,7 @@
-import { VillageState } from "./the_task.js"
-import { run_robot } from "./simulation.js"
-import { route_robot } from "./the_mail_trucks_route.js"
 import { goal_oriented_robot } from "./pathfinding.js"
+import { run_robot } from "./simulation.js"
+import route_robot from "./the_mail_trucks_route.js"
+import VillageState from "./the_task.js"
 
 
 /*
@@ -9,7 +9,7 @@ import { goal_oriented_robot } from "./pathfinding.js"
 	100 tasks and let each of the robots solve each of these tasks. When done, it should output the average
 	number of steps each robot took per task.
 */
-export function compare_robots(robot_1, memory_1, robot_2, memory_2) {
+export default function compare_robots(robot_1, memory_1, robot_2, memory_2) {
 	const iterations = 100
 	let total_robot_1 = 0, total_robot_2 = 0
 

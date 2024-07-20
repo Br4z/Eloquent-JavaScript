@@ -1,4 +1,4 @@
-class GroupIterator {
+export default class GroupIterator {
 	#members
 	#index
 
@@ -18,6 +18,3 @@ class GroupIterator {
 		}
 	}
 }
-
-
-module.exports = { GroupIterator }

@@ -1,6 +1,6 @@
-import { road_graph } from "./meadowfield.js"
-import { VillageState } from "./the_task.js"
+import road_graph from "./meadowfield.js"
 import { run_robot } from "./simulation.js"
+import VillageState from "./the_task.js"
 
 
 export function find_route(graph, from, to) { // Always found a route, because all the places are connected

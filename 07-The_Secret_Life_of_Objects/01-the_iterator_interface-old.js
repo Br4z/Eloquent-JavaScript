@@ -1,4 +1,4 @@
-class Matrix {
+export default class Matrix {
 	constructor(width, height, element = (x, y) => undefined) {
 		this.width = width
 		this.height = height
@@ -10,6 +10,7 @@ class Matrix {
 				this.content[y * width + x] = element(x, y)
 	}
 
+
 	get(x, y) {
 		return this.content[y * this.width + x]
 	}
@@ -17,6 +18,7 @@ class Matrix {
 	set(x, y, value) {
 		this.content[y * this.width + x] = value
 	}
+
 
 	static show(matrix) {
 		const width = matrix.width
@@ -40,6 +42,7 @@ class MatrixIterator {
 		this.y = 0
 		this.matrix = matrix
 	}
+
 
 	next() {
 		if (this.y == this.matrix.height)
@@ -69,6 +72,3 @@ Matrix.prototype[Symbol.iterator] = function () {
 
 // for (let { x, y, value } of matrix)
 // 	console.log(x, y, value)
-
-
-module.exports = { Matrix }

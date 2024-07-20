@@ -1,8 +1,9 @@
-const { List } = require("./the_iterator_interface-new.js")
+import List from "./01-the_iterator_interface-new.js"
 
 
 class LengthList extends List {
 	#length
+
 
 	constructor(value, rest) {
 		super(value, rest)

@@ -1,4 +1,4 @@
-const { GroupIterator } = require("./iterable_groups")
+import GroupIterator from "./05-iterable_groups.js"
 
 
 /*
@@ -32,6 +32,12 @@ class Group {
 		return this.#members.includes(element)
 	}
 
+
+	[Symbol.iterator]() {
+		return new GroupIterator(this.#members)
+	}
+
+
 	static from(collection) {
 		let group = new Group()
 
@@ -39,10 +45,6 @@ class Group {
 			group.add(element)
 
 		return group
-	}
-
-	[Symbol.iterator]() {
-		return new GroupIterator(this.#members)
 	}
 }
 
@@ -54,7 +56,6 @@ console.log(group.has(10))
 console.log(group.has(30))
 group.add(10)
 group.delete(10)
-console.log(group.members)
 console.log(group.has(10))
 
 /* ---------------------------------- TEST ---------------------------------- */

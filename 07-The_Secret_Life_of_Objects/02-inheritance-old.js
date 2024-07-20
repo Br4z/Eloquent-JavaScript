@@ -1,4 +1,4 @@
-const { Matrix } = require("./the_iterator_interface")
+import Matrix from "./01-the_iterator_interface-old.js"
 
 
 class SymmetricMatrix extends Matrix {
@@ -12,6 +12,7 @@ class SymmetricMatrix extends Matrix {
 			}
 		)
 	}
+
 
 	set(x, y, value) {
 		super.set(x, y, value)

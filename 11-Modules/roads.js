@@ -27,9 +27,11 @@ function build_dijkstrajs_graph(road_graph) {
 	for (let node of Object.keys(road_graph)) {
 		let edges = graph[node] = {}
 
-		for (let dest of road_graph[node])
-			edges[dest] = 1
+		for (let destination of road_graph[node])
+			edges[destination] = 1
 	}
+
+	return graph
 }
 
 export const dijkstrajs_graph = build_dijkstrajs_graph(road_graph)

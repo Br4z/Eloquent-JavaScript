@@ -1,16 +1,18 @@
-import { run_robot } from "./robots.js"
-import { VillageState } from "./state.js"
+import { dijkstrajs_graph } from "./roads.js"
+import { run_robot, VillageState } from "./state.js"
 
 
-export default function compare_robots(robot1, memory1, robot2, memory2) {
-	let total1 = 0, total2 = 0
+export function compare_robots(robot_1, memory_1, robot_2, memory_2) {
+	const iterations = 100
+	let total_robot_1 = 0, total_robot_2 = 0
 
-	for (let i = 0; i < 100; i++) {
-		let initial_state = VillageState.random()
+	for (let i = 0; i < iterations; i++) {
+		const state = VillageState.random(dijkstrajs_graph)
 
-		total1 += run_robot(initial_state, robot1, memory1)
-		total2 += run_robot(initial_state, robot2, memory2)
+		total_robot_1 += run_robot(state, robot_1, memory_1, dijkstrajs_graph)
+		total_robot_2 += run_robot(state, robot_2, memory_2, dijkstrajs_graph)
 	}
-	console.log(`Robot 1 needed ${total1 / 100} steps per task`)
-	console.log(`Robot 2 needed ${total2 / 100} steps per task`)
+
+	console.log(`Iterations: ${iterations}`)
+	console.log(`Robot 1 average: ${total_robot_1 / iterations}\tRobot 2 average: ${total_robot_2 / iterations}`)
 }

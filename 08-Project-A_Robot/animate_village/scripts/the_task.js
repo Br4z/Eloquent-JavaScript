@@ -1,4 +1,4 @@
-import { road_graph } from "./meadowfield.js"
+import road_graph from "./meadowfield.js"
 
 
 /*
@@ -6,16 +6,17 @@ import { road_graph } from "./meadowfield.js"
 	robot's current location and the collection of undelivered parcels, each of which has a current
 	location and a destination address. That is it.
 */
-export class VillageState {
+export default class VillageState {
 	constructor(place, parcels) {
 		this.place = place
 		this.parcels = parcels
 	}
 
+
 	move(destination) {
-		if (!road_graph[this.place].includes(destination)) {
+		if (!road_graph[this.place].includes(destination))
 			return this // If destinations is not available in that place, then return the preview state
-		} else {
+		else {
 			let parcels = this.parcels.map(p => { // map takes care of moving the parcels
 						if (p.place != this.place)
 							return p

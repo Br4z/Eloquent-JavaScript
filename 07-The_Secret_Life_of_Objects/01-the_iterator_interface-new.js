@@ -1,4 +1,4 @@
-class List {
+export default class List {
 	constructor(value, rest) {
 		this.value = value
 		this.rest = rest
@@ -8,6 +8,12 @@ class List {
 	get length() {
 		return 1 + (this.rest ? this.rest.length : 0)
 	}
+
+
+	[Symbol.iterator] = function () {
+		return new ListIterator(this)
+	}
+
 
 	static from_array(array) {
 		let list = null
@@ -19,16 +25,13 @@ class List {
 
 		return list
 	}
-
-	[Symbol.iterator] = function () {
-		return new ListIterator(this)
-	}
 }
 
 class ListIterator {
 	constructor(list) {
 		this.list = list
 	}
+
 
 	next() {
 		if (this.list == null)
@@ -47,6 +50,3 @@ class ListIterator {
 // 	console.log(element)
 
 // console.log([...list])
-
-
-module.exports = { List }
