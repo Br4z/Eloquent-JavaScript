@@ -33,9 +33,15 @@ class Group {
 	}
 
 
-	[Symbol.iterator]() {
-		return new GroupIterator(this.#members)
-	}
+	// [Symbol.iterator]() {
+	// 	return new GroupIterator(this.#members)
+	// }
+
+/* 	// Chapter 12 suggestion
+	[Symbol.iterator] = function* () {
+		for (let i = 0; i < this.#members.length; i++)
+			yield this.#members[i]
+	} */
 
 
 	static from(collection) {
