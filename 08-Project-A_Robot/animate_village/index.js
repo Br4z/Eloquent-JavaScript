@@ -125,7 +125,7 @@
 	}
 })()
 
-import { VillageState } from "./scripts/the_task.js";
-import { lazy_robot } from "./scripts/robot_efficiency.js";
+import { lazy_robot } from "./scripts/robot_efficiency.js"
+import { VillageState } from "./scripts/the_task.js"
 
-runRobotAnimation(VillageState.random(), lazy_robot, []);
+runRobotAnimation(VillageState.random(), lazy_robot, [])

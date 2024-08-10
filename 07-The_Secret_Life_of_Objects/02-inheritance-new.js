@@ -18,4 +18,4 @@ class LengthList extends List {
 
 /* ---------------------------------- TEST ---------------------------------- */
 
-console.log(LengthList.from_array([1, 2, 3]).length);
+console.log(LengthList.from_array([1, 2, 3]).length)

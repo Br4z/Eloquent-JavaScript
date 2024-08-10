@@ -5,9 +5,9 @@
 function everything_loop(array, predicate) {
 	for (let element of array)
 		if (!predicate(element))
-			return false;
+			return false
 
-	return true;
+	return true
 }
 
 /* ---------------------------------- TESTS --------------------------------- */
@@ -18,7 +18,7 @@ console.log(everything_loop([], n => n < 10))
 
 
 function everything_some(array, predicate) {
-	return !array.some((element) => !predicate(element));
+	return !array.some((element) => !predicate(element))
 }
 
 /* ---------------------------------- TESTS --------------------------------- */

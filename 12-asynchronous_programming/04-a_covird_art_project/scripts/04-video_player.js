@@ -1,5 +1,5 @@
-import request from "./01-environment.js";
-import screen_addresses from "./02-network_scanning.js";
+import request from "./01-environment.js"
+import screen_addresses from "./02-network_scanning.js"
 
 
 function display_frame(frame) {
@@ -12,7 +12,7 @@ function display_frame(frame) {
 }
 
 function wait(time) {
-	return new Promise(accept => setTimeout(accept, time));
+	return new Promise(accept => setTimeout(accept, time))
 }
 
 export default class VideoPlayer {

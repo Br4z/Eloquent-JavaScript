@@ -45,7 +45,7 @@ class ListIterator {
 
 /* ---------------------------------- TEST ---------------------------------- */
 
-// let list = List.from_array([1, 2, 3]);
+// let list = List.from_array([1, 2, 3])
 // for (let element of list)
 // 	console.log(element)
 

@@ -33,29 +33,29 @@ verify(/ca[rt]/,
 // pop y prop
 verify(/pr?op/,
 	["pop culture", "mad props"],
-	["plop", "prrrop"]);
+	["plop", "prrrop"])
 
 // ferret, ferry, y ferrari
 verify(/ferr(et|y|ari)/,
 	["ferret", "ferry", "ferrari"],
-	["ferrum", "transfer A"]);
+	["ferrum", "transfer A"])
 
 // Any word ending in ious
 verify(/ious\b/,
 	["how delicious", "spacious room"],
-	["ruinous", "consciousness"]);
+	["ruinous", "consciousness"])
 
 // A whitespace character followed by a period, comma, colon, or semicolon
 verify(/\s[.,:;]/,
 	["bad punctuation ."],
-	["escape the period"]);
+	["escape the period"])
 
 // A word longer than six letters.
 verify(/\w{7,}/,
 	["hottentottententen"],
-	["no", "hotten totten tenten"]);
+	["no", "hotten totten tenten"])
 
 // A word without the letter e (or E)
 verify(/\b[^\se]+\b/i,
 	["red platypus", "wobbling nest"],
-	["earth bed", "learning ape", "BEET"]);
+	["earth bed", "learning ape", "BEET"])
