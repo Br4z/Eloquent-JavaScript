@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Touch events</title>
+</head>
+
+<body>
+<style>
+	dot {
+		position: absolute;
+		display: block;
+		border: 2px solid red;
+		border-radius: 50px;
+		height: 100px;
+		width: 100px;
+	}
+</style>
+<p>Touch this page</p>
+<script>
+	function update(event) {
+		for (let dot; dot = document.querySelector("dot");)
+			dot.remove()
+
+		for (let i = 0; i < event.touches.length; i++) {
+			const { page_x, page_y } = event.touches[i]
+			const dot = document.createElement("dot")
+			dot.style.left = (page_x - 50) + "px"
+			dot.style.top = (page_y - 50) + "px"
+			document.body.appendChild(dot)
+		}
+	}
+	window.addEventListener("touchstart", update);
+	window.addEventListener("touchmove", update);
+	window.addEventListener("touchend", update);
+</script>
+</body>
+
+</html>

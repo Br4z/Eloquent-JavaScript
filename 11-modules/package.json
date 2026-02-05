@@ -5,7 +5,6 @@
 		"start": "node index.js"
 	},
 	"author": "Brandon",
-	"license": "ISC",
 	"dependencies": {
 		"date-names": "^0.1.13",
 		"ordinal": "^1.0.3"

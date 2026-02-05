@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Ballon</title>
+</head>
+
+<body>
+	<p>🎈</p>
+
+	<script>
+		const ballon = document.querySelector("p")
+		let size_limit = 150
+		let size = 100
+
+		function set_size(new_size) {
+			size = new_size
+			ballon.style.fontSize = size + "px"
+		}
+
+		set_size(100)
+
+		function arrows_handler(event) {
+			if (event.key == "ArrowUp") {
+				if (size > size_limit) {
+					ballon.textContent = "💥"
+					document.body.removeEventListener("keydown", arrows_handler)
+				} else {
+					set_size(size * 1.1)
+					event.preventDefault()
+				}
+			} else if (event.key == "ArrowDown") {
+				set_size(size * 0.9)
+				event.preventDefault()
+			}
+		}
+
+		document.body.addEventListener("keydown", arrows_handler)
+	</script>
+</body>
+
+</html>

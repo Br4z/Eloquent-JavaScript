@@ -1,0 +1,16 @@
+<p style="text-align: center">
+	<img src="./cat.png" style="position: relative">
+</p>
+<script>
+	let cat = document.querySelector("img")
+	let angle = Math.PI / 2
+	function animate(time, lastTime) { // We rely on "time" to ensure a stable motion
+		if (lastTime != null) {
+			angle += (time - lastTime) * 0.001
+		}
+		cat.style.top = (Math.sin(angle) * 20) + "px"
+		cat.style.left = (Math.cos(angle) * 200) + "px"
+		requestAnimationFrame(new_time => animate(new_time, time))
+	}
+	requestAnimationFrame(animate)
+</script>

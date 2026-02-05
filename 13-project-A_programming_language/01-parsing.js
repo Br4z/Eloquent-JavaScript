@@ -6,7 +6,7 @@ function parse_expression(program) {
 		expr = { type: "value", value: match[1] }
 	else if (match = /^\d+\b/.exec(program)) // Number
 		expr = { type: "value", value: Number(match[0]) }
-	else if (match = /^[^\s(),#"]+/.exec(program)) // Aplication
+	else if (match = /^[^\s(),#"]+/.exec(program)) // Application
 		expr = { type: "word", name: match[0] }
 	else
 		throw new SyntaxError("Unexpected syntax: " + program)
@@ -25,7 +25,7 @@ function parse_apply(expr, program) {
 	if (program[0] != "(")
 		return { expr: expr, rest: program }
 	else {
-		program = skip_space(program.slice(1)) // Without the "("
+		program = skip_space(program.slice(1)) // Skip the "("
 		expr = { type: "apply", operator: expr, args: [] }
 		while (program[0] != ")") {
 			let arg = parse_expression(program)
@@ -33,7 +33,7 @@ function parse_apply(expr, program) {
 			program = skip_space(arg.rest)
 
 			if (program[0] == ",")
-				program = skip_space(program.slice(1))
+				program = skip_space(program.slice(1)) // Skip the ","
 			else if (program[0] != ")")
 				throw new SyntaxError("Expected \",\" or \")\"")
 		}
@@ -44,7 +44,7 @@ function parse_apply(expr, program) {
 export default function parse(program) {
 	let { expr, rest } = parse_expression(program)
 
-	if (skip_space(rest).length > 0)
+	if (skip_space(rest).length > 0) // Every programs has a "do" that wraps a program content
 		throw new SyntaxError("Unexpected text after program")
 
 	return expr
@@ -54,3 +54,6 @@ export default function parse(program) {
 
 // const result = parse("+(a, 10)")
 // console.log(JSON.stringify(result, null, 2))
+
+const result = parse_expression("multiply(4)(3)")
+console.log(JSON.stringify(result, null, 2))

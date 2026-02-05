@@ -17,12 +17,14 @@ special_forms.fun = (args, scope) => {
 	})
 
 	return function (...args) {
-		if (args.length != params.length)
+		const args_length = args.length
+
+		if (args_length != params.length)
 			throw new TypeError("Wrong number of arguments")
 
 		let local_scope = Object.create(scope)
 
-		for (let i = 0; i < args.length; i++)
+		for (let i = 0; i < args_length; i++)
 			local_scope[params[i]] = args[i]
 
 		return evaluate(body, local_scope)
@@ -32,8 +34,8 @@ special_forms.fun = (args, scope) => {
 /* ---------------------------------- TESTS --------------------------------- */
 
 // let program = `
-// do(define(plusOne, fun(a, +(a, 1))),
-// 	print(plusOne(10)))
+// do(define(plus_one, fun(a, +(a, 1))),
+// 	print(plus_one(10)))
 // `
 // run(program)
 
