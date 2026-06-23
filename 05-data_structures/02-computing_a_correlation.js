@@ -1,22 +1,23 @@
-import { JOURNAL } from "01-JOURNAL.js"
+import { JOURNAL } from '01-JOURNAL.js';
 
-
-export function phi(table) { // [n_00, n_01, n_10, n_11]
-	return (table[3] * table[0] - table[2] * table[1]) /
-		Math.sqrt((table[2] + table[3]) *
-			(table[0] + table[1]) *
-			(table[1] + table[3]) *
-			(table[0] + table[2]))
+export function phi(table) {
+  // [n_00, n_01, n_10, n_11]
+  return (
+    (table[3] * table[0] - table[2] * table[1]) /
+    Math.sqrt(
+      (table[2] + table[3]) * (table[0] + table[1]) * (table[1] + table[3]) * (table[0] + table[2]),
+    )
+  );
 }
 
 /*
 // More visual way
 function phi([n00, n01, n10, n11]) {
-	return (n11 * n00 - n10 * n01) /
-		Math.sqrt((n10 + n11) *
-				(n00 + n01) *
-				(n01 + n11) *
-				(n00 + n10))
+  return (n11 * n00 - n10 * n01) /
+    Math.sqrt((n10 + n11) *
+        (n00 + n01) *
+        (n01 + n11) *
+        (n00 + n10))
 }
 */
 
@@ -24,29 +25,27 @@ function phi([n00, n01, n10, n11]) {
 
 // console.log(phi([76, 9, 4, 1]))
 
-
 /*
-	For creating the table for an event, we set the following data structure "[n_00, n_01, n_10, n_11]":
+  For creating the table for an event, we set the following data structure "[n_00, n_01, n_10, n_11]":
 
-	- The first number represents the squirrel.
+  - The first number represents the squirrel.
 
-	- The second number represents the event.
+  - The second number represents the event.
 */
 export function table_for(event, journal) {
-	const table = [0, 0, 0, 0]
+  const table = [0, 0, 0, 0];
 
-	for (let i = 0; i < journal.length; i++) {
-		let entry = journal[i], index = 0
+  for (let i = 0; i < journal.length; i++) {
+    let entry = journal[i],
+      index = 0;
 
-		if (entry.events.includes(event))
-			index += 1
-		if (entry.squirrel)
-			index += 2
+    if (entry.events.includes(event)) index += 1;
+    if (entry.squirrel) index += 2;
 
-		table[index] += 1
-	}
+    table[index] += 1;
+  }
 
-	return table
+  return table;
 }
 
 /* ---------------------------------- TEST ---------------------------------- */

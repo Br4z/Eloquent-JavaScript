@@ -1,40 +1,39 @@
 /*
-	Write a function called "reverse_array", takes an array as an argument and produces a new array
-	that has the same elements in the inverse order.
+  Write a function called "reverse_array", takes an array as an argument and produces a new array
+  that has the same elements in the inverse order.
 */
 function reverse_array(array) {
-	const output = []
+  const output = [];
 
-	for (let i = array.length - 1; i >= 0; i--)
-		output.push(array[i])
+  for (let i = array.length - 1; i >= 0; i--) output.push(array[i]);
 
-	return output
+  return output;
 }
 
 /* ---------------------------------- TEST ---------------------------------- */
 
-console.log(reverse_array(["A", "B", "C"]))
-
+console.log(reverse_array(['A', 'B', 'C']));
 
 /*
-	Write a function called "reverse_array_in_place", does what the reverse method does: it modifies
-	the array given as an argument by reversing its elements.
+  Write a function called "reverse_array_in_place", does what the reverse method does: it modifies
+  the array given as an argument by reversing its elements.
 */
 function reverse_array_in_place(array) {
-	const length = array.length
+  const length = array.length;
 
-	for (let i = 0; i < length / 2; i++) { // Math.floor(length / 2)
-		const old = array[i]
+  for (let i = 0; i < length / 2; i++) {
+    // Math.floor(length / 2)
+    const old = array[i];
 
-		array[i] = array[(length - 1) - i]
-		array[(length - 1) - i] = old
-	}
+    array[i] = array[length - 1 - i];
+    array[length - 1 - i] = old;
+  }
 
-	return array
+  return array;
 }
 
 /* ---------------------------------- TEST ---------------------------------- */
 
-const array = [1, 2, 3, 4, 5]
-reverse_array_in_place(array)
-console.log(array)
+const array = [1, 2, 3, 4, 5];
+reverse_array_in_place(array);
+console.log(array);

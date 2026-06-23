@@ -1,3 +1,3 @@
-addEventListener("message", event => {
-	postMessage(event.data * event.data)
-})
+addEventListener('message', (event) => {
+  postMessage(event.data * event.data);
+});

@@ -1,81 +1,88 @@
 export class Vec {
-	constructor(x, y) {
-		this.x = x
-		this.y = y
-	}
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
 
-	plus(other) {
-		return new Vec(this.x + other.x, this.y + other.y)
-	}
+  plus(other) {
+    return new Vec(this.x + other.x, this.y + other.y);
+  }
 
-	times(factor) {
-		return new Vec(this.x * factor, this.y * factor)
-	}
+  times(factor) {
+    return new Vec(this.x * factor, this.y * factor);
+  }
 }
 /* -------------------------------------------------------------------------- */
 
 export class Player {
-	constructor(pos, speed) {
-		this.pos = pos
-		this.speed = speed
-	}
+  constructor(pos, speed) {
+    this.pos = pos;
+    this.speed = speed;
+  }
 
-	get type() { return "player" }
+  get type() {
+    return 'player';
+  }
 
-	static create(pos) {
-		return new Player(pos.plus(new Vec(0, -0.5)), new Vec(0, 0))
-	}
+  static create(pos) {
+    return new Player(pos.plus(new Vec(0, -0.5)), new Vec(0, 0));
+  }
 }
 
-Player.prototype.size = new Vec(0.8, 1.5)
+Player.prototype.size = new Vec(0.8, 1.5);
 
 /* -------------------------------------------------------------------------- */
 
 class Lava {
-	constructor(pos, speed, reset) {
-		this.pos = pos
-		this.speed = speed
-		this.reset = reset
-	}
+  constructor(pos, speed, reset) {
+    this.pos = pos;
+    this.speed = speed;
+    this.reset = reset;
+  }
 
-	get type() { return "lava" }
+  get type() {
+    return 'lava';
+  }
 
-	static create(pos, ch) {
-		if (ch == "=")
-			return new Lava(pos, new Vec(2, 0))
-		else if (ch == "|")
-			return new Lava(pos, new Vec(0, 2))
-		else if (ch == "v")
-			return new Lava(pos, new Vec(0, 3), pos)
-
-	}
+  static create(pos, ch) {
+    if (ch == '=') return new Lava(pos, new Vec(2, 0));
+    else if (ch == '|') return new Lava(pos, new Vec(0, 2));
+    else if (ch == 'v') return new Lava(pos, new Vec(0, 3), pos);
+  }
 }
 
-Lava.prototype.size = new Vec(1, 1)
+Lava.prototype.size = new Vec(1, 1);
 
 /* -------------------------------------------------------------------------- */
 
 class Coin {
-	constructor(pos, base_pos, wobble) {
-		this.pos = pos
-		this.base_pos = base_pos
-		this.wobble = wobble
-	}
+  constructor(pos, base_pos, wobble) {
+    this.pos = pos;
+    this.base_pos = base_pos;
+    this.wobble = wobble;
+  }
 
-	get type() { return "coin" }
+  get type() {
+    return 'coin';
+  }
 
-	static create(pos) {
-		const base_pos = pos.plus(new Vec(0.2, 0.1))
-		return new Coin(base_pos, base_pos, Math.random() * Math.PI * 2)
-	}
+  static create(pos) {
+    const base_pos = pos.plus(new Vec(0.2, 0.1));
+    return new Coin(base_pos, base_pos, Math.random() * Math.PI * 2);
+  }
 }
 
-Coin.prototype.size = new Vec(0.6, 0.6)
+Coin.prototype.size = new Vec(0.6, 0.6);
 
 /* -------------------------------------------------------------------------- */
 
 export const level_chars = {
-	".": "empty", "#": "wall", "+": "lava",
-	"@": Player, "o": Coin,
-	"=": Lava, "|": Lava, "v": Lava
-}
+  '.': 'empty',
+  '#': 'wall',
+  '+': 'lava',
+  '@': Player,
+  o: Coin,
+  '=': Lava,
+  '|': Lava,
+  v: Lava,
+};

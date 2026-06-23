@@ -1,21 +1,22 @@
 function convert_number(decimal_number, base = 10) {
-	let result = "", sign = ""
+  let result = '',
+    sign = '';
 
-	if (decimal_number < 0) {
-		sign = "-"
-		decimal_number = -decimal_number
-	}
+  if (decimal_number < 0) {
+    sign = '-';
+    decimal_number = -decimal_number;
+  }
 
-	do {
-		result = String(decimal_number % base) + result
-		decimal_number = Math.floor(decimal_number / base) // (decimal_number - decimal_number % base) / base
-	} while (decimal_number > 0)
+  do {
+    result = String(decimal_number % base) + result;
+    decimal_number = Math.floor(decimal_number / base); // (decimal_number - decimal_number % base) / base
+  } while (decimal_number > 0);
 
-	return sign + result
+  return sign + result;
 }
 
 /* ---------------------------------- TEST ---------------------------------- */
 
-console.log(convert_number(11, 10))
+console.log(convert_number(11, 10));
 
-console.log(convert_number(11, 2))
+console.log(convert_number(11, 2));

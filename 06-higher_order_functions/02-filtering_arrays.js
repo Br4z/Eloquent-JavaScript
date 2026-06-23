@@ -1,18 +1,16 @@
-import { SCRIPTS } from "./01-SCRIPTS.js"
-
+import { SCRIPTS } from './01-SCRIPTS.js';
 
 // To find the scripts in the data set that are still in use.
 function filter(array, test) {
-	let passed = []
+  let passed = [];
 
-	for (let element of array) {
-		if (test(element))
-			passed.push(element)
-	}
+  for (let element of array) {
+    if (test(element)) passed.push(element);
+  }
 
-	return passed
+  return passed;
 }
 
 /* ---------------------------------- TEST ---------------------------------- */
 
-console.log(filter(SCRIPTS, script => script.living))
+console.log(filter(SCRIPTS, (script) => script.living));

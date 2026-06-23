@@ -1,12 +1,12 @@
 {
-	"name": "11-modules",
-	"type": "commonjs",
-	"scripts": {
-		"start": "node index.js"
-	},
-	"author": "Brandon",
-	"dependencies": {
-		"date-names": "^0.1.13",
-		"ordinal": "^1.0.3"
-	}
+  "name": "11-modules",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Brandon",
+  "dependencies": {
+    "date-names": "^0.1.13",
+    "ordinal": "^1.0.3"
+  }
 }

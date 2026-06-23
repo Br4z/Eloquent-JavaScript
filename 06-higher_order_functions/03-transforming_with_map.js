@@ -1,16 +1,14 @@
-import { SCRIPTS } from "./01-SCRIPTS.js"
-
+import { SCRIPTS } from './01-SCRIPTS.js';
 
 function map(array, transform) {
-	let mapped = []
+  let mapped = [];
 
-	for (let element of array)
-		mapped.push(transform(element))
+  for (let element of array) mapped.push(transform(element));
 
-	return mapped
+  return mapped;
 }
 
 /* ---------------------------------- TEST ---------------------------------- */
 
-let rtl_scripts = SCRIPTS.filter(s => s.direction == "rtl")
-console.log(map(rtl_scripts, s => s.name))
+let rtl_scripts = SCRIPTS.filter((s) => s.direction == 'rtl');
+console.log(map(rtl_scripts, (s) => s.name));

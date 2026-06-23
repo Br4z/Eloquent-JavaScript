@@ -1,12 +1,15 @@
-import { SCRIPTS } from "./01-SCRIPTS.js"
-
+import { SCRIPTS } from './01-SCRIPTS.js';
 
 export function character_script(code) {
-	for (let script of SCRIPTS)
-		if (script.ranges.some(([from, to]) => { return code >= from && code < to }))
-			return script
+  for (let script of SCRIPTS)
+    if (
+      script.ranges.some(([from, to]) => {
+        return code >= from && code < to;
+      })
+    )
+      return script;
 
-	return null
+  return null;
 }
 
 /* ---------------------------------- TEST ---------------------------------- */

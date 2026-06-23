@@ -1,36 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
+  <head>
+    <title>Mouse motions</title>
+  </head>
 
-<head>
-	<title>Mouse motions</title>
-</head>
+  <body>
+    <p>Drag the bar to change its width:</p>
+    <div style="background: orange; width: 60px; height: 20px"></div>
+    <script>
+      let last_x; // Tracks the last observed mouse X position
+      const bar = document.querySelector('div');
+      bar.addEventListener('mousedown', (event) => {
+        if (event.button == 0) {
+          last_x = event.clientX;
+          window.addEventListener('mousemove', moved);
+          event.preventDefault(); // Prevent selection
+        }
+      });
 
-<body>
-	<p>Drag the bar to change its width:</p>
-	<div style="background: orange; width: 60px; height: 20px">
-	</div>
-	<script>
-		let last_x // Tracks the last observed mouse X position
-		const bar = document.querySelector("div")
-		bar.addEventListener("mousedown", event => {
-			if (event.button == 0) {
-				last_x = event.clientX
-				window.addEventListener("mousemove", moved)
-				event.preventDefault() // Prevent selection
-			}
-		})
-
-		function moved(event) {
-			if (event.buttons == 0)
-				window.removeEventListener("mousemove", moved)
-			else {
-				let dist = event.clientX - last_x
-				let new_width = Math.max(10, bar.offsetWidth + dist)
-				bar.style.width = new_width + "px"
-				last_x = event.clientX
-			}
-		}
-	</script>
-</body>
-
+      function moved(event) {
+        if (event.buttons == 0) window.removeEventListener('mousemove', moved);
+        else {
+          let dist = event.clientX - last_x;
+          let new_width = Math.max(10, bar.offsetWidth + dist);
+          bar.style.width = new_width + 'px';
+          last_x = event.clientX;
+        }
+      }
+    </script>
+  </body>
 </html>

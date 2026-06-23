@@ -1,20 +1,18 @@
-import List from "./01-the_iterator_interface-new.js"
-
+import List from './01-the_iterator_interface-new.js';
 
 class LengthList extends List {
-	#length
+  #length;
 
-	constructor(value, rest) {
-		super(value, rest)
-		this.#length = super.length
-	}
+  constructor(value, rest) {
+    super(value, rest);
+    this.#length = super.length;
+  }
 
-
-	get length() {
-		return this.#length
-	}
+  get length() {
+    return this.#length;
+  }
 }
 
 /* ---------------------------------- TEST ---------------------------------- */
 
-console.log(LengthList.from_array([1, 2, 3]).length)
+console.log(LengthList.from_array([1, 2, 3]).length);

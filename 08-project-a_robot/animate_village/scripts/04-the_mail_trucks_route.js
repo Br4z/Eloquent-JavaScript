@@ -1,19 +1,27 @@
-import VillageState from "./02-the_task.js"
-import { run_robot } from "./03-simulation.js"
+import VillageState from './02-the_task.js';
+import { run_robot } from './03-simulation.js';
 
-
-const mail_route = [ // Takes maximum 26 turns (twice the 13-step route)
-	"Alice's House", "Cabin", "Alice's House", "Bob's House",
-	"Town Hall", "Daria's House", "Ernie's House",
-	"Grete's House", "Shop", "Grete's House", "Farm",
-	"Marketplace", "Post Office"
-]
+const mail_route = [
+  // Takes maximum 26 turns (twice the 13-step route)
+  "Alice's House",
+  'Cabin',
+  "Alice's House",
+  "Bob's House",
+  'Town Hall',
+  "Daria's House",
+  "Ernie's House",
+  "Grete's House",
+  'Shop',
+  "Grete's House",
+  'Farm',
+  'Marketplace',
+  'Post Office',
+];
 
 export default function route_robot(state, memory) {
-	if (memory.length == 0)
-		memory = mail_route
+  if (memory.length == 0) memory = mail_route;
 
-	return { direction: memory[0], memory: memory.slice(1) }
+  return { direction: memory[0], memory: memory.slice(1) };
 }
 
 /* ---------------------------------- TEST ---------------------------------- */

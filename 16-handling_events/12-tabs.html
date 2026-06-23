@@ -1,43 +1,40 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
+  <head>
+    <title>Tabs</title>
+  </head>
 
-<head>
-	<title>Tabs</title>
-</head>
+  <body>
+    <tab-panel>
+      <div data-tabname="one">Tab one</div>
+      <div data-tabname="two">Tab two</div>
+      <div data-tabname="three">Tab three</div>
+    </tab-panel>
+    <script>
+      function as_tabs(node) {
+        const tabs = Array.from(node.children).map((node) => {
+          const button = document.createElement('button');
+          button.textContent = node.getAttribute('data-tabname');
+          let tab = { node, button };
+          button.addEventListener('click', () => select_tab(tab));
+          return tab;
+        });
 
-<body>
-	<tab-panel>
-		<div data-tabname="one">Tab one</div>
-		<div data-tabname="two">Tab two</div>
-		<div data-tabname="three">Tab three</div>
-	</tab-panel>
-	<script>
-		function as_tabs(node) {
-			const tabs = Array.from(node.children).map(node => {
-				const button = document.createElement("button")
-				button.textContent = node.getAttribute("data-tabname")
-				let tab = { node, button }
-				button.addEventListener("click", () => select_tab(tab))
-				return tab
-			})
+        const tab_list = document.createElement('div');
+        for (let { button } of tabs) tab_list.appendChild(button);
+        node.insertBefore(tab_list, node.firstChild);
 
-			const tab_list = document.createElement("div")
-			for ( let { button } of tabs)
-				tab_list.appendChild(button)
-			node.insertBefore(tab_list, node.firstChild)
+        function select_tab(selected_tab) {
+          for (let tab of tabs) {
+            const is_selected = tab == selected_tab;
+            tab.node.style.display = is_selected ? '' : 'none';
+            tab.button.style.color = is_selected ? 'red' : '';
+          }
+        }
 
-			function select_tab(selected_tab) {
-				for (let tab of tabs) {
-					const is_selected = tab == selected_tab
-					tab.node.style.display = is_selected ? "" : "none"
-					tab.button.style.color = is_selected ? "red" : ""
-				}
-			}
-
-			select_tab(tabs[0])
-		}
-		as_tabs(document.querySelector("tab-panel"))
-	</script>
-</body>
-
+        select_tab(tabs[0]);
+      }
+      as_tabs(document.querySelector('tab-panel'));
+    </script>
+  </body>
 </html>

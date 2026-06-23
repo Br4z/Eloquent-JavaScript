@@ -6,4 +6,4 @@
 
 - [Source](https://eloquentjavascript.net).
 
-- [Notes](https://github.com/Br4z/life/tree/main/notes/personal/books/Eloquent_JavaScript).
+- [Notes](https://github.com/braz9LKDI/gray_vault/tree/main/02-resources/books/eloquent_JavaScript).

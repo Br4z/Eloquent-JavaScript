@@ -1,20 +1,18 @@
 export default class GroupIterator {
-	#members
-	#index
+  #members;
+  #index;
 
-	constructor(members) {
-		this.#members = members
-		this.#index = 0
-	}
+  constructor(members) {
+    this.#members = members;
+    this.#index = 0;
+  }
 
-
-	next() {
-		if (this.#index >= this.#members.length)
-			return { done: true }
-		else {
-			let result = { value: this.#members[this.#index], done: false }
-			this.#index++
-			return result
-		}
-	}
+  next() {
+    if (this.#index >= this.#members.length) return { done: true };
+    else {
+      let result = { value: this.#members[this.#index], done: false };
+      this.#index++;
+      return result;
+    }
+  }
 }

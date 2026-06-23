@@ -1,38 +1,35 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
+  <head>
+    <title>Debouncing</title>
+  </head>
 
-<head>
-	<title>Debouncing</title>
-</head>
+  <body>
+    <h1>Mouse at</h1>
+    <textarea>Type something here...</textarea>
+    <script>
+      const textarea = document.querySelector('textarea');
+      let timeout;
+      textarea.addEventListener('input', () => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => console.log('Typed!'), 500);
+      });
+    </script>
 
-<body>
-	<h1>Mouse at</h1>
-	<textarea>Type something here...</textarea>
-	<script>
-		const textarea = document.querySelector("textarea")
-		let timeout
-		textarea.addEventListener("input", () => {
-			clearTimeout(timeout)
-			timeout = setTimeout(() => console.log("Typed!"), 500)
-		})
-	</script>
+    <!-- ----------------------------------------------------------------------- -->
 
-	<!-- ----------------------------------------------------------------------- -->
-
-	<script>
-		const title = document.querySelector("h1")
-		let scheduled = null
-		window.addEventListener("mousemove", event => {
-			if (!scheduled) {
-				setTimeout(() => {
-					title.textContent =
-						`Mouse at ${scheduled.pageX}, ${scheduled.pageY}`
-					scheduled = null
-				}, 250)
-			}
-			scheduled = event
-		})
-	</script>
-</body>
-
+    <script>
+      const title = document.querySelector('h1');
+      let scheduled = null;
+      window.addEventListener('mousemove', (event) => {
+        if (!scheduled) {
+          setTimeout(() => {
+            title.textContent = `Mouse at ${scheduled.pageX}, ${scheduled.pageY}`;
+            scheduled = null;
+          }, 250);
+        }
+        scheduled = event;
+      });
+    </script>
+  </body>
 </html>
